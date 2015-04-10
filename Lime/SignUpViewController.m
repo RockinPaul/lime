@@ -25,9 +25,10 @@
 
 // Clear and turn back default text in text fields
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [textField setText:@""];
     
+    [textField setText:@""];
     // Adding dots placeholder to password field
+    
     if ([[textField restorationIdentifier ] isEqual:@"pass"]) {
         [textField setSecureTextEntry:YES];
     }
@@ -66,12 +67,12 @@
 - (void)keyboardDidShow:(NSNotification *)notification
 {
     // Assign new frame to your view
-    [self.view setFrame:CGRectMake(0,-110,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+    [self.view setFrame:CGRectMake(0, -80, 400, 800)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
 {
-    [self.view setFrame:CGRectMake(0,0,320,460)];
+    [self.view setFrame:CGRectMake(0, 0, 400, 800)];
 }
 // ==================================================================================================================
 // Dismiss on tap (have some questions)
