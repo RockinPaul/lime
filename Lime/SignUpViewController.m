@@ -15,6 +15,84 @@
     
 }
 
+
+// TODO
+- (void)presentViewController {
+    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    //    ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    //    [self presentViewController:vc animated:YES completion:nil];
+}
+
+
+- (void)auth:(UIButton *)sender {
+    
+    if ([[self.signButton.titleLabel text] isEqualToString:@"Sign In"]) {
+        [self signIn];
+    } else
+        if ([[self.signButton.titleLabel text] isEqualToString:@"Sign Up"]) {
+            [self signUp];
+        } else {
+            NSLog(@"Something is wrong.");
+    }
+}
+
+
+- (void)signUp {
+    
+    PFUser *user = [PFUser user];
+    user.username = [self.emailTextField text];
+    user.password = [self.passwordTextField text];
+    user.email = [self.emailTextField text];
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+            NSLog(@"Authorization successful!");
+        } else {
+            if ([error code] == 203) { // email already exists
+                [self.errorLabel setText:@"Email already exists"];
+            }
+            if ([error code] == 125) {
+                [self.errorLabel setText:@"Invalid email address"];
+            }
+            if ([error code] == 202) {
+                [self.errorLabel setText:@"Email already taken"];
+            }
+        }
+    }];
+}
+
+
+- (void)signIn {
+    [PFUser logInWithUsernameInBackground:[self.emailTextField text] password:[self.passwordTextField text]
+                                    block:^(PFUser *user, NSError *error) {
+        if (user) {
+               // Do stuff after successful login.
+            NSLog(@"Sign In success!");
+            [self presentViewController];
+        } else {
+               // The login failed. Check error to see why.
+            if ([error code] == 101) { // email already exists
+                [self.errorLabel setText:@"Wrong password"];
+            }
+            if ([error code] == 205) {
+                [self.errorLabel setText:@"User not found"];
+            }
+            if ([error code] == 125) {
+                [self.errorLabel setText:@"Invalid email address"];
+            }
+        }
+    }];
+}
+
+
+- (void)newcomer:(UIButton *)sender {
+    [self.signButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+    [self.newcomerLabel setText:@""];
+    [self.newcomerButton setHidden:YES];
+}
+
+
 // ==================================================================================================================
 // Dismiss keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -46,6 +124,7 @@
         }
     }
 }
+
 
 // ==================================================================================================================
 // Move up the screen

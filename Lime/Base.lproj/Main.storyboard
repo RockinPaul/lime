@@ -38,14 +38,47 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="X6i-5j-z4C"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-4y-ard">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="334" width="268" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haven't account? Just" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncO-xv-jQX">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="93" y="452" width="152" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-SO-MjK">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="sign up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="247" y="448" width="51" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="newcomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZKw-Rx-xsV"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-in-vn5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="176" y="385" width="48" height="30"/>
+                                    <rect key="frame" x="140" y="385" width="120" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="auth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SP6-Da-qQd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -53,6 +86,9 @@
                             <mask key="subviews">
                                 <exclude reference="FkN-8o-Pag"/>
                                 <exclude reference="UAS-q3-xE6"/>
+                                <exclude reference="dZj-4y-ard"/>
+                                <exclude reference="ncO-xv-jQX"/>
+                                <exclude reference="5CQ-SO-MjK"/>
                                 <exclude reference="AgV-in-vn5"/>
                             </mask>
                         </variation>
@@ -60,14 +96,20 @@
                             <mask key="subviews">
                                 <include reference="FkN-8o-Pag"/>
                                 <include reference="UAS-q3-xE6"/>
+                                <include reference="dZj-4y-ard"/>
+                                <include reference="ncO-xv-jQX"/>
+                                <include reference="5CQ-SO-MjK"/>
                                 <include reference="AgV-in-vn5"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="UAS-q3-xE6" id="auW-2t-pVV"/>
+                        <outlet property="errorLabel" destination="dZj-4y-ard" id="aVo-jC-9VP"/>
+                        <outlet property="newcomerButton" destination="5CQ-SO-MjK" id="XGa-ON-Sah"/>
+                        <outlet property="newcomerLabel" destination="ncO-xv-jQX" id="5da-xX-43d"/>
                         <outlet property="passwordTextField" destination="FkN-8o-Pag" id="Bsb-77-hZh"/>
-                        <outlet property="signUpButton" destination="AgV-in-vn5" id="g0D-lL-z1K"/>
+                        <outlet property="signButton" destination="AgV-in-vn5" id="MvV-Ns-vTR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
