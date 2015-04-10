@@ -22,5 +22,6 @@
 - (IBAction)auth:(UIButton *)sender;
 - (IBAction)newcomer:(UIButton *)sender;
 - (IBAction)resendConfirmation:(UIButton *)sender;
+- (IBAction)resetPassword:(UIButton *)sender;
 
 @end

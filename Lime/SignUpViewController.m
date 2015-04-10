@@ -98,11 +98,26 @@
 // Email verification
 - (void)resendConfirmation:(UIButton *)sender {
     
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error ){
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if(succeeded) {
             NSLog(@"Successfuly resent");
             [[PFUser currentUser] setObject:[self.emailTextField text] forKey:@"email"];
             [[PFUser currentUser] saveInBackground];
+        }
+    }];
+}
+
+
+// Reset password. User takes the email with instructions from Parse.
+- (void)resetPassword:(UIButton *)sender {
+    [PFUser requestPasswordResetForEmailInBackground:[self.emailTextField text] block:^(BOOL succeeded, NSError *error){
+        if (!error) {
+            [self.errorLabel setText:@"Check email for instructions"];
+            NSLog(@"Succesfuly reset");
+        } else {
+            if ([error code] == 205) {
+                [self.errorLabel setText:@"No user found with this email"];
+            }
         }
     }];
 }
