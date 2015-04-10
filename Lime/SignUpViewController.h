@@ -17,8 +17,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *errorLabel;
 @property (nonatomic, strong) IBOutlet UILabel *newcomerLabel;
 @property (nonatomic, strong) IBOutlet UIButton *newcomerButton;
+@property (nonatomic, strong) IBOutlet UIButton *resendConfirmationButton;
 
 - (IBAction)auth:(UIButton *)sender;
 - (IBAction)newcomer:(UIButton *)sender;
+- (IBAction)resendConfirmation:(UIButton *)sender;
 
 @end

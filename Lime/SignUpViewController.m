@@ -48,6 +48,7 @@
         if (!error) {
             // Hooray! Let them use the app now.
             NSLog(@"Authorization successful!");
+            [self.newcomerLabel setText:@"Check your email to confirm registration"];
         } else {
             if ([error code] == 203) { // email already exists
                 [self.errorLabel setText:@"Email already exists"];
@@ -86,10 +87,24 @@
 }
 
 
+// Changing button state for sign up
 - (void)newcomer:(UIButton *)sender {
     [self.signButton setTitle:@"Sign Up" forState:UIControlStateNormal];
     [self.newcomerLabel setText:@""];
     [self.newcomerButton setHidden:YES];
+}
+
+
+// Email verification
+- (void)resendConfirmation:(UIButton *)sender {
+    
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error ){
+        if(succeeded) {
+            NSLog(@"Successfuly resent");
+            [[PFUser currentUser] setObject:[self.emailTextField text] forKey:@"email"];
+            [[PFUser currentUser] saveInBackground];
+        }
+    }];
 }
 
 

@@ -38,6 +38,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="X6i-5j-z4C"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-in-vn5">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="140" y="385" width="120" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="auth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SP6-Da-qQd"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-4y-ard">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -47,13 +59,13 @@
                                     <rect key="frame" x="61" y="334" width="268" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haven't account? Just" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncO-xv-jQX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haven't account? Just" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncO-xv-jQX">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="93" y="452" width="152" height="21"/>
+                                    <rect key="frame" x="93" y="438" width="153" height="50"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-SO-MjK">
@@ -68,16 +80,16 @@
                                     <action selector="newcomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZKw-Rx-xsV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-in-vn5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8o-33-P93">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Sign In">
+                                <state key="normal" title="Resend confirmation!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="140" y="385" width="120" height="30"/>
+                                    <rect key="frame" x="118" y="565" width="164" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="auth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SP6-Da-qQd"/>
+                                    <action selector="resendConfirmation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b4o-Fx-xcS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,20 +98,22 @@
                             <mask key="subviews">
                                 <exclude reference="FkN-8o-Pag"/>
                                 <exclude reference="UAS-q3-xE6"/>
+                                <exclude reference="AgV-in-vn5"/>
                                 <exclude reference="dZj-4y-ard"/>
                                 <exclude reference="ncO-xv-jQX"/>
                                 <exclude reference="5CQ-SO-MjK"/>
-                                <exclude reference="AgV-in-vn5"/>
+                                <exclude reference="j8o-33-P93"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="FkN-8o-Pag"/>
                                 <include reference="UAS-q3-xE6"/>
+                                <include reference="AgV-in-vn5"/>
                                 <include reference="dZj-4y-ard"/>
                                 <include reference="ncO-xv-jQX"/>
                                 <include reference="5CQ-SO-MjK"/>
-                                <include reference="AgV-in-vn5"/>
+                                <include reference="j8o-33-P93"/>
                             </mask>
                         </variation>
                     </view>
@@ -109,6 +123,7 @@
                         <outlet property="newcomerButton" destination="5CQ-SO-MjK" id="XGa-ON-Sah"/>
                         <outlet property="newcomerLabel" destination="ncO-xv-jQX" id="5da-xX-43d"/>
                         <outlet property="passwordTextField" destination="FkN-8o-Pag" id="Bsb-77-hZh"/>
+                        <outlet property="resendConfirmationButton" destination="j8o-33-P93" id="96V-Cl-7PB"/>
                         <outlet property="signButton" destination="AgV-in-vn5" id="MvV-Ns-vTR"/>
                     </connections>
                 </viewController>
