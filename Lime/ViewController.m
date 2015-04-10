@@ -20,10 +20,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-    PFLogInViewController *logInController = [[PFLogInViewController alloc] init];
-    logInController.delegate = self;
-    [self presentViewController:logInController animated:YES completion:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
