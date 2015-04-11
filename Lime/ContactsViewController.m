@@ -51,8 +51,33 @@
     if (!cell) {
         cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
-
-    cell.textLabel.text = object[@"username"];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 4.0, 300.0, 30.0)];
+    [nameLabel setTag:1];
+    [nameLabel setBackgroundColor:[UIColor clearColor]]; // transparent label background
+    [nameLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:1.0]];
+    [nameLabel setFont:[UIFont boldSystemFontOfSize:13.0]];
+    [nameLabel setText: object[@"username"]];
+    
+    
+    
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 9.0, 150.0, 80.0)];
+    [messageLabel setTag:2];
+    [messageLabel setBackgroundColor:[UIColor clearColor]];
+    [messageLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];
+    [messageLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:100.0]];
+    [messageLabel setNumberOfLines: 2];
+    
+    UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(330.0, 25.0, 50.0, 30.0)];
+    [countLabel setTag:3];
+    [countLabel setBackgroundColor:[UIColor clearColor]];
+    [countLabel setFont: [UIFont boldSystemFontOfSize:18.0]];
+    [countLabel setTextColor:[UIColor colorWithRed:(39.0/255) green:(174.0/255) blue:(96.0/255) alpha:1.0]];
+    
+    
+    [cell.contentView addSubview:nameLabel];
+    [cell.contentView addSubview:messageLabel];
+    [cell.contentView addSubview:countLabel];
     
     return cell;
 }
