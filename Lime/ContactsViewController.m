@@ -11,16 +11,14 @@
 
 @implementation ContactsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
+
+- (id)initWithCoder:(NSCoder *)aCoder {
     
-    self = [super initWithStyle:style];
-    if (self) {
-        // This table displays items in the Todo class
-        self.parseClassName = @"Todo";
-        self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 25;
-    }
+    self = [super initWithCoder:(NSCoder *)aCoder];
+    self.pullToRefreshEnabled = YES;
+    self.paginationEnabled = YES;
+    self.objectsPerPage = 25;
+    
     return self;
 }
 
