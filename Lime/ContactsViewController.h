@@ -10,6 +10,10 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface ContactsViewController : PFQueryTableViewController
+@interface ContactsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *contactsArray;
+@property (nonatomic, strong) NSMutableArray *dateArray;
 
 @end
