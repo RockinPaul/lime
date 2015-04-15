@@ -20,17 +20,12 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
-                                                      selector: @selector(refreshData:) userInfo: nil repeats: YES];
-    [self refreshData:myTimer];
-    
-}
-
-
--(void) refreshData:(NSTimer*) timer {
-    
     [self getTableInfo];
     
+//    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
+//                                                      selector: @selector(refreshData:) userInfo: nil repeats: YES];
+//    [self refreshData:myTimer];
+//    
 }
 
 
@@ -109,11 +104,11 @@
     
     // Date
     // create a custom label:                                        x    y   width  height
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 4.0, 300.0, 30.0)];
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, 300.0, 30.0)];
     [dateLabel setTag:1];
     [dateLabel setBackgroundColor:[UIColor clearColor]]; // transparent label background
     [dateLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:1.0]];
-    [dateLabel setFont:[UIFont boldSystemFontOfSize:13.0]];
+    [dateLabel setFont:[UIFont boldSystemFontOfSize:10.0]];
 
     NSDate* date = [self.dateArray objectAtIndex:indexPath.row];
     
@@ -124,7 +119,7 @@
     [dateLabel setText:stringFromDate];
     // =========================================
     
-    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 9.0, 150.0, 80.0)];
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 13.0, 150.0, 80.0)];
     [messageLabel setTag:2];
     [messageLabel setBackgroundColor:[UIColor clearColor]];
     [messageLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];

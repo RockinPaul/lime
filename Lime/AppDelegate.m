@@ -13,11 +13,13 @@
 
 @end
 
-@implementation AppDelegate
 
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [PubNub setDelegate:self]; // PubNub init.
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
