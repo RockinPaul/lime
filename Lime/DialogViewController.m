@@ -11,7 +11,6 @@
 
 @implementation DialogViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,90 +25,16 @@
     PNChannel *channel;
     channel = [self pubNubConnect];
     
-    [[PNObservationCenter defaultCenter] addClientConnectionStateObserver:self withCallbackBlock:^(NSString *origin, BOOL connected, PNError *connectionError){
-        
-        if (connected)
-        {
-            NSLog(@"OBSERVER: Successful Connection!");
-            
-            // Subscribe on the channel
-            [PubNub subscribeOnChannel:channel];
-        }
-        else if (!connected || connectionError)
-        {
-            NSLog(@"OBSERVER: Error %@, Connection Failed!", connectionError.localizedDescription);
-        }
-        
-    }];
+    [self addClientConnectionStateObserver:channel];
     
-    [[PNObservationCenter defaultCenter] addClientChannelSubscriptionStateObserver:self withCallbackBlock:^(PNSubscriptionProcessState state, NSArray *channels, PNError *error){
-        
-        switch (state) {
-            case PNSubscriptionProcessSubscribedState:
-                NSLog(@"OBSERVER: Subscribed to Channel: %@", channels[0]);
-                // #2 Send a welcome message on subscribe
-                [PubNub sendMessage:[NSString stringWithFormat:@"Hello Everybody!" ] toChannel:channel ];
-                break;
-            case PNSubscriptionProcessNotSubscribedState:
-                NSLog(@"OBSERVER: Not subscribed to Channel: %@, Error: %@", channels[0], error);
-                break;
-            case PNSubscriptionProcessWillRestoreState:
-                NSLog(@"OBSERVER: Will re-subscribe to Channel: %@", channels[0]);
-                break;
-            case PNSubscriptionProcessRestoredState:
-                NSLog(@"OBSERVER: Re-subscribed to Channel: %@", channels[0]);
-                break;
-        }
-    }];
+    [self addClientChannelSubscriptionStateObserver:channel];
     
-    [[PNObservationCenter defaultCenter] addClientChannelUnsubscriptionObserver:self withCallbackBlock:^(NSArray *channel, PNError *error) {
-        if ( error == nil )
-        {
-            NSLog(@"OBSERVER: Unsubscribed from Channel: %@", channel[0]);
-            [PubNub subscribeOnChannel:channel];
-        }
-        else
-        {
-            NSLog(@"OBSERVER: Unsubscribed from Channel: %@, Error: %@", channel[0], error);
-        }
-    }];
+    [self addClientChannelUnsubscriptionObserver:channel];
     
-    // Observer looks for message received events
-    [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *message) {
-        NSLog(@"OBSERVER: Channel: %@, Message: %@", message.channel.name, message.message);
-        
-        // Look for a message that matches "**************"
-        if ( [[[NSString stringWithFormat:@"%@", message.message] substringWithRange:NSMakeRange(1,14)] isEqualToString: @"**************" ])
-        {
-            // Send a goodbye message
-            [PubNub sendMessage:[NSString stringWithFormat:@"Thank you, GOODBYE!" ] toChannel:channel withCompletionBlock:^(PNMessageState messageState, id data) {
-                if (messageState == PNMessageSent) {
-                    NSLog(@"OBSERVER: Sent Goodbye Message!");
-                    //Unsubscribe once the message has been sent.
-                    [PubNub unsubscribeFromChannel:channel ];
-                }
-            }];
-        }
-    }];
+    [self addMessageReceiveObserver:channel];
     
+    [self addMessageProcessingObserver];
     
-    // #3 Add observer to catch message send events.
-    [[PNObservationCenter defaultCenter] addMessageProcessingObserver:self withBlock:^(PNMessageState state, id data){
-        
-        switch (state) {
-            case PNMessageSent:
-                NSLog(@"OBSERVER: Message Sent.");
-                break;
-            case PNMessageSending:
-                NSLog(@"OBSERVER: Sending Message...");
-                break;
-            case PNMessageSendingError:
-                NSLog(@"OBSERVER: ERROR: Failed to Send Message.");
-                break;
-            default:
-                break;
-        }
-    }];
     // =================================
     
 //    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
@@ -288,6 +213,109 @@
     [PubNub setConfiguration:config];
     [PubNub connect];
     return channel;
+}
+
+
+- (void)addClientConnectionStateObserver:(PNChannel *)channel
+{
+    [[PNObservationCenter defaultCenter] addClientConnectionStateObserver:self withCallbackBlock:^(NSString *origin, BOOL connected, PNError *connectionError){
+        
+        if (connected)
+        {
+            NSLog(@"OBSERVER: Successful Connection!");
+            
+            // Subscribe on the channel
+            [PubNub subscribeOnChannel:channel];
+        }
+        else if (!connected || connectionError)
+        {
+            NSLog(@"OBSERVER: Error %@, Connection Failed!", connectionError.localizedDescription);
+        }
+        
+    }];
+}
+
+
+- (void)addClientChannelSubscriptionStateObserver:(PNChannel *)channel
+{
+    [[PNObservationCenter defaultCenter] addClientChannelSubscriptionStateObserver:self withCallbackBlock:^(PNSubscriptionProcessState state, NSArray *channels, PNError *error){
+        
+        switch (state) {
+            case PNSubscriptionProcessSubscribedState:
+                NSLog(@"OBSERVER: Subscribed to Channel: %@", channels[0]);
+                // #2 Send a welcome message on subscribe
+                [PubNub sendMessage:[NSString stringWithFormat:@"Hello Everybody!" ] toChannel:channel ];
+                break;
+            case PNSubscriptionProcessNotSubscribedState:
+                NSLog(@"OBSERVER: Not subscribed to Channel: %@, Error: %@", channels[0], error);
+                break;
+            case PNSubscriptionProcessWillRestoreState:
+                NSLog(@"OBSERVER: Will re-subscribe to Channel: %@", channels[0]);
+                break;
+            case PNSubscriptionProcessRestoredState:
+                NSLog(@"OBSERVER: Re-subscribed to Channel: %@", channels[0]);
+                break;
+        }
+    }];
+}
+
+
+- (void)addClientChannelUnsubscriptionObserver:(PNChannel *)channel {
+    [[PNObservationCenter defaultCenter] addClientChannelUnsubscriptionObserver:self withCallbackBlock:^(NSArray *channel, PNError *error) {
+        if ( error == nil )
+        {
+            NSLog(@"OBSERVER: Unsubscribed from Channel: %@", channel[0]);
+            [PubNub subscribeOnChannel:channel];
+        }
+        else
+        {
+            NSLog(@"OBSERVER: Unsubscribed from Channel: %@, Error: %@", channel[0], error);
+        }
+    }];
+}
+
+
+- (void)addMessageReceiveObserver:(PNChannel *)channel
+{
+    // Observer looks for message received events
+    [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *message) {
+        NSLog(@"OBSERVER: Channel: %@, Message: %@", message.channel.name, message.message);
+        
+        // Look for a message that matches "**************"
+        if ( [[[NSString stringWithFormat:@"%@", message.message] substringWithRange:NSMakeRange(1,14)] isEqualToString: @"**************" ])
+        {
+            // Send a goodbye message
+            [PubNub sendMessage:[NSString stringWithFormat:@"Thank you, GOODBYE!" ] toChannel:channel withCompletionBlock:^(PNMessageState messageState, id data) {
+                if (messageState == PNMessageSent) {
+                    NSLog(@"OBSERVER: Sent Goodbye Message!");
+                    //Unsubscribe once the message has been sent.
+                    [PubNub unsubscribeFromChannel:channel ];
+                }
+            }];
+        }
+    }];
+}
+
+
+- (void)addMessageProcessingObserver
+{
+    // #3 Add observer to catch message send events.
+    [[PNObservationCenter defaultCenter] addMessageProcessingObserver:self withBlock:^(PNMessageState state, id data){
+        
+        switch (state) {
+            case PNMessageSent:
+                NSLog(@"OBSERVER: Message Sent.");
+                break;
+            case PNMessageSending:
+                NSLog(@"OBSERVER: Sending Message...");
+                break;
+            case PNMessageSendingError:
+                NSLog(@"OBSERVER: ERROR: Failed to Send Message.");
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 
