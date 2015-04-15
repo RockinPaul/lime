@@ -113,6 +113,7 @@
 		E96763611ADF0BFF001C351A /* PNConnectionChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = E96762F31ADF0BFF001C351A /* PNConnectionChannel.m */; };
 		E96763621ADF0BFF001C351A /* PNLoggerSymbols.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96762F51ADF0BFF001C351A /* PNLoggerSymbols.plist */; };
 		E96763631ADF0BFF001C351A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96762FA1ADF0BFF001C351A /* Info.plist */; };
+		E967636D1ADF200F001C351A /* PubNubConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E967636C1ADF200F001C351A /* PubNubConnectionManager.m */; };
 		E9F790C41AD7BA5000C962DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C31AD7BA5000C962DD /* main.m */; };
 		E9F790C71AD7BA5000C962DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C61AD7BA5000C962DD /* AppDelegate.m */; };
 		E9F790CA1AD7BA5000C962DD /* Lime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C81AD7BA5000C962DD /* Lime.xcdatamodeld */; };
@@ -448,6 +449,8 @@
 		E96762F51ADF0BFF001C351A /* PNLoggerSymbols.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PNLoggerSymbols.plist; sourceTree = "<group>"; };
 		E96762F61ADF0BFF001C351A /* PubNub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PubNub.xcodeproj; sourceTree = "<group>"; };
 		E96762FA1ADF0BFF001C351A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E967636B1ADF1FB5001C351A /* PubNubConnectionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubConnectionManager.h; sourceTree = "<group>"; };
+		E967636C1ADF200F001C351A /* PubNubConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubConnectionManager.m; sourceTree = "<group>"; };
 		E9F790BE1AD7BA4F00C962DD /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F790C21AD7BA5000C962DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9F790C31AD7BA5000C962DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -989,6 +992,8 @@
 				E9F791181AD8173800C962DD /* SignUpViewController.m */,
 				E9675FFB1ADE72C3001C351A /* DialogViewController.h */,
 				E9675FFC1ADE731F001C351A /* DialogViewController.m */,
+				E967636B1ADF1FB5001C351A /* PubNubConnectionManager.h */,
+				E967636C1ADF200F001C351A /* PubNubConnectionManager.m */,
 				E9F790EA1AD7CD0000C962DD /* Message.h */,
 				E9F790EC1AD7F8E600C962DD /* Message.m */,
 				E9F790EB1AD7CE3300C962DD /* User.h */,
@@ -1196,6 +1201,7 @@
 				E9F790C41AD7BA5000C962DD /* main.m in Sources */,
 				E96763591ADF0BFF001C351A /* PNSubscribeRequest.m in Sources */,
 				E96763501ADF0BFF001C351A /* PNHeartbeatRequest.m in Sources */,
+				E967636D1ADF200F001C351A /* PubNubConnectionManager.m in Sources */,
 				E96763221ADF0BFF001C351A /* PNAccessRightsCollection.m in Sources */,
 				E967631E1ADF0BFF001C351A /* PNResponseParser.m in Sources */,
 				E967635D1ADF0BFF001C351A /* PNNetworkHelper.m in Sources */,

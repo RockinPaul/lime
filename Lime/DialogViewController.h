@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "PNImports.h"
 #import "Message.h"
+#import "PubNubConnectionManager.h"
 
 @interface DialogViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
