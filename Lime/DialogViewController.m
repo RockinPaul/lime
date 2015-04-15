@@ -20,7 +20,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
+                                                      selector: @selector(refreshData:) userInfo: nil repeats: YES];
+    [self refreshData:myTimer];
+    
 }
+
+
+-(void) refreshData:(NSTimer*) timer {
+    
+    [self getTableInfo];
+    
+}
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
@@ -53,6 +65,36 @@
 }
 
 
+- (void) getTableInfo {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"recipient" equalTo: [PFUser currentUser]];
+    
+    self.messageArray = [[NSMutableArray alloc] init];
+    self.dateArray = [[NSMutableArray alloc] init];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        NSDate *date;
+        NSString *message;
+        
+        for (PFObject *obj in objects) {
+            
+            date = [obj valueForKey:@"createdAt"];
+            message = [obj valueForKey:@"text"];
+            
+            
+            [self.messageArray addObject:message];
+            [self.dateArray addObject:date];
+        }
+        NSLog(@"%@", [self.messageArray description]);
+        NSLog(@"%@", [self.dateArray description]);
+        
+        [self.tableView reloadData]; // for loading new data from arrays
+    }];
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -65,7 +107,37 @@
     [cell setBackgroundView:bgView];
     [cell setIndentationWidth:0.0];
     
+    // Date
+    // create a custom label:                                        x    y   width  height
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 4.0, 300.0, 30.0)];
+    [dateLabel setTag:1];
+    [dateLabel setBackgroundColor:[UIColor clearColor]]; // transparent label background
+    [dateLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:1.0]];
+    [dateLabel setFont:[UIFont boldSystemFontOfSize:13.0]];
+
+    NSDate* date = [self.dateArray objectAtIndex:indexPath.row];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    [dateLabel setText:stringFromDate];
+    // =========================================
+    
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 9.0, 150.0, 80.0)];
+    [messageLabel setTag:2];
+    [messageLabel setBackgroundColor:[UIColor clearColor]];
+    [messageLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];
+    [messageLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:100.0]];
+    [messageLabel setNumberOfLines: 2];
+    
+    NSString *cellValue = [self.messageArray objectAtIndex:indexPath.row];
+    [messageLabel setText: cellValue];
+    
+    // Adding subviews to cell
+    [cell.contentView addSubview:dateLabel];
+    [cell.contentView addSubview:messageLabel];
+
     return cell;
 }
 
@@ -78,7 +150,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return [self.messageArray count];
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath: indexPath {
+    return 80.0;
 }
 
 

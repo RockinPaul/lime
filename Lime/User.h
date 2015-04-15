@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface User : NSObject
 
+@property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;
 

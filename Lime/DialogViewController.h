@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) Message *message;
 @property (nonatomic, strong) PFUser *recipient;
+@property (nonatomic, strong) NSMutableArray *messageArray;
+@property (nonatomic, strong) NSMutableArray *dateArray;
 
 - (IBAction)send:(UIButton *)sender;
 
