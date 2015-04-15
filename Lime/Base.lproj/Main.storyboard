@@ -230,17 +230,39 @@
                                             <outlet property="delegate" destination="2VC-UA-NDB" id="Aq7-iz-lew"/>
                                         </connections>
                                     </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lur-fz-PpK">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Pj4-bW-aIL">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pj4-bW-aIL" id="1Br-LI-AYW">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="67" width="359" height="459"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="dataSource" destination="2VC-UA-NDB" id="r1M-tc-ep2"/>
+                                            <outlet property="delegate" destination="2VC-UA-NDB" id="ab6-EY-MXl"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70448704770000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="Nec-Ta-arm"/>
+                                        <exclude reference="Lur-fz-PpK"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <mask key="subviews">
                                         <include reference="Nec-Ta-arm"/>
+                                        <include reference="Lur-fz-PpK"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -259,6 +281,7 @@
                     </view>
                     <connections>
                         <outlet property="messageTextField" destination="Nec-Ta-arm" id="y0n-Yh-G4I"/>
+                        <outlet property="tableView" destination="Lur-fz-PpK" id="TUh-cG-fgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUM-Dq-N4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
