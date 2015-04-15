@@ -14,8 +14,8 @@
 @property (nonatomic, strong) PNChannel *channel;
 
 - (void)initConnection;
-- (void)sendMessage:(Message *)message;
-- (Message *)receiveMessage;
+- (void)send:(Message *)message;
+- (Message *)receive;
 
 + (PubNubConnectionManager *) sharedInstance;
 

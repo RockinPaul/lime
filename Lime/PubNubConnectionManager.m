@@ -28,6 +28,19 @@
 }
 
 
+- (void)send
+{
+    // Send a goodbye message
+    [PubNub sendMessage:[NSString stringWithFormat:@"Thank you, GOODBYE!" ] toChannel:self.channel withCompletionBlock:^(PNMessageState messageState, id data) {
+        if (messageState == PNMessageSent) {
+            NSLog(@"OBSERVER: Sent Goodbye Message!");
+            //Unsubscribe once the message has been sent.
+            [PubNub unsubscribeFromChannel:self.channel];
+        }
+    }];
+}
+
+
 - (PNChannel *)pubNubConnect
 {
     // PubNub implementation
@@ -115,14 +128,7 @@
         // Look for a message that matches "**************"
         if ( [[[NSString stringWithFormat:@"%@", message.message] substringWithRange:NSMakeRange(1,14)] isEqualToString: @"**************" ])
         {
-            // Send a goodbye message
-            [PubNub sendMessage:[NSString stringWithFormat:@"Thank you, GOODBYE!" ] toChannel:self.channel withCompletionBlock:^(PNMessageState messageState, id data) {
-                if (messageState == PNMessageSent) {
-                    NSLog(@"OBSERVER: Sent Goodbye Message!");
-                    //Unsubscribe once the message has been sent.
-                    [PubNub unsubscribeFromChannel:self.channel];
-                }
-            }];
+            [self send];
         }
     }];
 }
