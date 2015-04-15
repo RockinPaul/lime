@@ -11,6 +11,7 @@
 
 @implementation DialogViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,19 +23,8 @@
     
     [self getTableInfo];
     
-    // PubNub implementation
-    
-    PNConfiguration *config = [PNConfiguration configurationForOrigin:@"pubsub.pubnub.com"
-                                                             publishKey:@"pub-c-eaa60e8f-990f-487e-826c-a95ca71ded15"
-                                                           subscribeKey:@"sub-c-426ec5a4-e3a2-11e4-883b-0619f8945a4f"
-                                                              secretKey:@"sec-c-NGI3NjVhZDctZTI0Ny00YmVkLTk2N2UtYzM2MDlhNDY3MmM4"
-];
-    // #1 define new channel name "demo"
-    PNChannel *channel = [PNChannel channelWithName:@"dialog"
-                                 shouldObservePresence:YES];
-    
-    [PubNub setConfiguration:config];
-    [PubNub connect];
+    PNChannel *channel;
+    channel = [self pubNubConnect];
     
     [[PNObservationCenter defaultCenter] addClientConnectionStateObserver:self withCallbackBlock:^(NSString *origin, BOOL connected, PNError *connectionError){
         
@@ -278,5 +268,27 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+
+// ========================================= PubNub section================================================
+
+- (PNChannel *)pubNubConnect
+{
+    // PubNub implementation
+    
+    PNConfiguration *config = [PNConfiguration configurationForOrigin:@"pubsub.pubnub.com"
+                                                           publishKey:@"pub-c-eaa60e8f-990f-487e-826c-a95ca71ded15"
+                                                         subscribeKey:@"sub-c-426ec5a4-e3a2-11e4-883b-0619f8945a4f"
+                                                            secretKey:@"sec-c-NGI3NjVhZDctZTI0Ny00YmVkLTk2N2UtYzM2MDlhNDY3MmM4"
+                               ];
+    // #1 define new channel name "demo"
+    PNChannel *channel = [PNChannel channelWithName:@"dialog"
+                              shouldObservePresence:YES];
+    
+    [PubNub setConfiguration:config];
+    [PubNub connect];
+    return channel;
+}
+
 
 @end
