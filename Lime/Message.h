@@ -18,7 +18,9 @@
 @property (nonatomic, strong) PFUser *recipient;
 
 - (Message *)createMessageWithText:(NSString *)text;
-- (void)sendMessage:(Message *)message To:(PFUser *)recipient;
+- (void)sendMessageTo:(PFUser *)recipient;
 - (void)describeMessage:(Message *)message;
+
++ (Message *) sharedInstance;
 
 @end

@@ -12,4 +12,13 @@
 @implementation User
 
 
++ (User *) sharedInstance {
+    static dispatch_once_t pred;
+    static User *sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[User alloc] init];
+    });
+    return sharedInstance;
+}
+
 @end

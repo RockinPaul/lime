@@ -224,7 +224,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="44" y="541" width="286" height="45"/>
+                                            <rect key="frame" x="8" y="544" width="359" height="45"/>
                                         </variation>
                                         <connections>
                                             <outlet property="delegate" destination="2VC-UA-NDB" id="Aq7-iz-lew"/>
@@ -250,12 +250,25 @@
                                             <outlet property="delegate" destination="2VC-UA-NDB" id="ab6-EY-MXl"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5O-0J-UsQ">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="309" y="597" width="58" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="send:" destination="2VC-UA-NDB" eventType="touchUpInside" id="BIu-O5-Qqx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70448704770000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="Nec-Ta-arm"/>
                                         <exclude reference="Lur-fz-PpK"/>
+                                        <exclude reference="M5O-0J-UsQ"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -263,6 +276,7 @@
                                     <mask key="subviews">
                                         <include reference="Nec-Ta-arm"/>
                                         <include reference="Lur-fz-PpK"/>
+                                        <include reference="M5O-0J-UsQ"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -281,6 +295,7 @@
                     </view>
                     <connections>
                         <outlet property="messageTextField" destination="Nec-Ta-arm" id="y0n-Yh-G4I"/>
+                        <outlet property="sendButton" destination="M5O-0J-UsQ" id="dwz-49-gvw"/>
                         <outlet property="tableView" destination="Lur-fz-PpK" id="TUh-cG-fgH"/>
                     </connections>
                 </viewController>

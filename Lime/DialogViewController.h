@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Message.h"
 
 @interface DialogViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UITextField *messageTextField;
 @property (nonatomic, strong) IBOutlet UILabel *usernameTitleLabel;
+@property (nonatomic, strong) IBOutlet UIButton *sendButton;
+
+@property (nonatomic, strong) Message *message;
+@property (nonatomic, strong) PFUser *recipient;
+
+- (IBAction)send:(UIButton *)sender;
 
 
 

@@ -22,6 +22,36 @@
     
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    Message *message = [Message sharedInstance];
+    message = [message createMessageWithText:[self.messageTextField text]]; // Create message with textField text
+    
+    if (message != nil) {
+        self.message = message;
+        self.message.recipient = [PFUser currentUser]; // MOCK: TODO - get recipient from contact table;
+        NSLog(@"%@", [PFUser currentUser]);
+    } else {
+        NSLog(@"Error. Nil message");
+    }
+}
+
+
+- (void)send:(UIButton *)sender {
+    
+    [self textFieldDidEndEditing:self.messageTextField];
+    NSLog(@"textFieldDidEndEditing");
+    NSLog(@"%@", self.message.text);
+    NSLog(@"%@", self.message.sender);
+    NSLog(@"%@", self.message.recipient);
+    
+    if (self.message != nil) {
+        [self.message sendMessageTo:self.message.recipient];
+    }
+    
+    NSLog(@"Send button pressed!");
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -52,6 +82,7 @@
 }
 
 
+// Setting up separator insets
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     

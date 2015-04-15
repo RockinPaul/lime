@@ -22,12 +22,12 @@
 }
 
 
-- (void)sendMessage:(Message *)message To:(PFUser *)recipient {
+- (void)sendMessageTo:(PFUser *)recipient {
     
     PFObject *pfMessage = [PFObject objectWithClassName:@"Message"];
-    pfMessage[@"text"] = message.text;
-    pfMessage[@"sender"] = message.sender;
-    pfMessage[@"recipient"] = recipient;
+    pfMessage[@"text"] = self.text;
+    pfMessage[@"sender"] = self.sender;
+    pfMessage[@"recipient"] = self.recipient;
     
     [pfMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -44,6 +44,16 @@
     NSLog(@"DATE: %@", message.date);
     NSLog(@"SENDER: %@", message.sender);
     NSLog(@"RECIPIENT: %@", message.recipient);
+}
+
+
++(Message *) sharedInstance {
+    static dispatch_once_t pred;
+    static Message *sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[Message alloc] init];
+    });
+    return sharedInstance;
 }
 
 @end
