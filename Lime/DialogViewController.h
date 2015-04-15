@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface DialogViewController : NSObject
+@interface DialogViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITextField *messageTextField;
+@property (nonatomic, strong) IBOutlet UILabel *usernameLabel;
 
 
 @end

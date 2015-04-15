@@ -32,8 +32,9 @@
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"sign_up"];
+//    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"sign_up"];
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"navigation"];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"dialog"];
     
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];

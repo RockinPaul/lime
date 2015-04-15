@@ -11,4 +11,11 @@
 
 @implementation DialogViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.messageTextField.delegate = self;
+    self.messageTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+}
+
 @end

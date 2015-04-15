@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="1213.5" y="216.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Dialog View Controller-->
         <scene sceneID="qoU-ii-Oao">
             <objects>
-                <viewController id="2VC-UA-NDB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2VC-UA-NDB" customClass="DialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SgD-WJ-1xA"/>
                         <viewControllerLayoutGuide type="bottom" id="EH8-rV-nVK"/>
@@ -214,12 +214,56 @@
                     <view key="view" contentMode="scaleToFill" id="NvH-PR-rdL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrg-Bx-dIB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nec-Ta-arm">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="44" y="541" width="286" height="45"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="2VC-UA-NDB" id="Aq7-iz-lew"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.70448704770000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Nec-Ta-arm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <mask key="subviews">
+                                        <include reference="Nec-Ta-arm"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Zrg-Bx-dIB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Zrg-Bx-dIB"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="Nec-Ta-arm" id="y0n-Yh-G4I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUM-Dq-N4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155.5" y="594.75"/>
+            <point key="canvasLocation" x="2155.5" y="592.5"/>
         </scene>
     </scenes>
     <resources>
