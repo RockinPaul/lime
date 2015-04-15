@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9675FFD1ADE731F001C351A /* DialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9675FFC1ADE731F001C351A /* DialogViewController.m */; };
 		E9F790C41AD7BA5000C962DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C31AD7BA5000C962DD /* main.m */; };
 		E9F790C71AD7BA5000C962DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C61AD7BA5000C962DD /* AppDelegate.m */; };
 		E9F790CA1AD7BA5000C962DD /* Lime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C81AD7BA5000C962DD /* Lime.xcdatamodeld */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9675FFB1ADE72C3001C351A /* DialogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialogViewController.h; sourceTree = "<group>"; };
+		E9675FFC1ADE731F001C351A /* DialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewController.m; sourceTree = "<group>"; };
 		E9F790BE1AD7BA4F00C962DD /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F790C21AD7BA5000C962DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9F790C31AD7BA5000C962DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				E9F791181AD8173800C962DD /* SignUpViewController.m */,
 				E9F790EA1AD7CD0000C962DD /* Message.h */,
 				E9F790EC1AD7F8E600C962DD /* Message.m */,
+				E9675FFB1ADE72C3001C351A /* DialogViewController.h */,
+				E9675FFC1ADE731F001C351A /* DialogViewController.m */,
 				E9F790EB1AD7CE3300C962DD /* User.h */,
 				E9F790EE1AD7F91C00C962DD /* User.m */,
 				E9F790CE1AD7BA5000C962DD /* Main.storyboard */,
@@ -329,6 +334,7 @@
 				E9F790C71AD7BA5000C962DD /* AppDelegate.m in Sources */,
 				E9F7911B1AD92BF600C962DD /* ContactsViewController.m in Sources */,
 				E9F790C41AD7BA5000C962DD /* main.m in Sources */,
+				E9675FFD1ADE731F001C351A /* DialogViewController.m in Sources */,
 				E9F790EF1AD7F91C00C962DD /* User.m in Sources */,
 				E9F790ED1AD7F8E600C962DD /* Message.m in Sources */,
 				E9F790CD1AD7BA5000C962DD /* ViewController.m in Sources */,

@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "User.h"
 
 @interface Message : NSObject
 
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) User *sender;
-@property (nonatomic, strong) User *recipient;
+@property (nonatomic, strong) PFUser *sender;
+@property (nonatomic, strong) PFUser *recipient;
+
+- (Message *)createMessageWithText:(NSString *)text;
+- (void)sendMessage:(Message *)message To:(PFUser *)recipient;
+- (void)describeMessage:(Message *)message;
 
 @end
