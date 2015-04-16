@@ -1303,7 +1303,7 @@ typedef NS_OPTIONS(NSUInteger, PNLoggerConfiguration) {
 
 - (void)applyDefaultConfiguration {
 
-    [[self class] loggerEnabled:(PNLOG_LOGGING_ENABLED == 1)];
+    [[self class] loggerEnabled:(PNLOG_LOGGING_ENABLED == 0)]; // Value changed manually
     [[self class] dumpToFile:(PNLOG_STORE_LOG_TO_FILE == 1)];
     [[self class] dumpHTTPResponseToFile:(PNLOG_CONNECTION_LAYER_RAW_HTTP_RESPONSE_STORING_ENABLED == 1)];
 
