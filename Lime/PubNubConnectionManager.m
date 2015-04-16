@@ -63,7 +63,7 @@
 }
 
 
-- (void)send:(Message *)message
+- (void)send:(Message *)message forTable:(UITableView *)tableView;
 {
     // Send a message
     [PubNub sendMessage:[NSString stringWithFormat:@"%@", message.text] toChannel:self.channel withCompletionBlock:^(PNMessageState messageState, id data) {
@@ -76,6 +76,7 @@
             
             [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"PFObject successfuly saved.");
+                [tableView reloadData];
             }];
         }
     }];
@@ -100,10 +101,12 @@
         pfObject[@"text"] = text;
         pfObject[@"date"] = date;
         
-        [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [tableView reloadData];
-            NSLog(@"PFObject successfuly saved.");
-        }];
+        if ([pfObject valueForKey:@"sender"] != nil) {
+            [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [tableView reloadData];
+                NSLog(@"PFObject successfuly saved.");
+            }];
+        }
     }];
 }
 

@@ -15,7 +15,7 @@
 @property (nonatomic, strong) PNChannel *channel;
 
 - (void)initConnection;
-- (void)send:(Message *)message;
+- (void)send:(Message *)message forTable:(UITableView *)tableView;
 - (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView; // wrapper for receiver
 
 + (PubNubConnectionManager *) sharedInstance;

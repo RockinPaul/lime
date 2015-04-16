@@ -25,13 +25,6 @@
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     [pubNubManager initConnection];
     [pubNubManager receiveTo:self.messageArray AndDateArray:self.dateArray forTable:self.tableView];
-    
-    // =================================
-    
-//    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
-//                                                      selector: @selector(refreshData:) userInfo: nil repeats: YES];
-//    [self refreshData:myTimer];
-//    
 }
 
 
@@ -55,13 +48,12 @@
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     
     Message *message = [[Message alloc] init];
-    message.text = @"TEXT TEXT TEXT TEXT TEXT"; // get text from messageTextField
-    message.date = [[NSDate alloc] init];       // init date attribute by current date
-    message.sender = [PFUser currentUser];      // sender is current application user
-    message.recipient = [PFUser currentUser];   // TODO
+    message.text = [self.messageTextField text];    // get text from messageTextField
+    message.date = [[NSDate alloc] init];           // init date attribute by current date
+    message.sender = [PFUser currentUser];          // sender is current application user
+    message.recipient = [PFUser currentUser];       // TODO
     
-    [pubNubManager send:message];
-    
+    [pubNubManager send:message forTable:self.tableView];
 }
 
 
