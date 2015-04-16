@@ -22,16 +22,9 @@
     
     [self getTableInfo];
     
-    Message *message = [[Message alloc] init];
-    message.text = @"TEXT TEXT TEXT TEXT TEXT";
-    message.date = [[NSDate alloc] init];
-    message.sender = [PFUser currentUser];
-    message.recipient = [PFUser currentUser];
-    
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     [pubNubManager initConnection];
-    [pubNubManager send:message];
-    [pubNubManager receive:message];
+    [pubNubManager receive:nil];
     
     // =================================
     
@@ -59,17 +52,16 @@
 
 - (void)send:(UIButton *)sender {
     
-    [self textFieldDidEndEditing:self.messageTextField];
-    NSLog(@"textFieldDidEndEditing");
-    NSLog(@"%@", self.message.text);
-    NSLog(@"%@", self.message.sender);
-    NSLog(@"%@", self.message.recipient);
+    PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     
-    if (self.message != nil) {
-        [self.message sendMessageTo:self.message.recipient];
-    }
+    Message *message = [[Message alloc] init];
+    message.text = @"TEXT TEXT TEXT TEXT TEXT"; // get text from messageTextField
+    message.date = [[NSDate alloc] init];       // init date attribute by current date
+    message.sender = [PFUser currentUser];      // sender is current application user
+    message.recipient = [PFUser currentUser];   // TODO
     
-    NSLog(@"Send button pressed!");
+    [pubNubManager send:message];
+    
 }
 
 
