@@ -73,7 +73,7 @@
             
             PFObject *pfObject = [message messageToPFObject:message];
             pfObject[@"text"] = [NSString stringWithFormat:@"%@", message.text];
-            pfObject[@"createdAt"] = [[NSDate alloc] init];
+            pfObject[@"date"] = [[NSDate alloc] init];
             
             [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"PFObject successfuly saved.");
@@ -96,7 +96,7 @@
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
         
         pfObject[@"text"] = [NSString stringWithFormat:@"%@", pnMessage.message];
-        pfObject[@"createdAt"] = [[NSDate alloc] init];
+        pfObject[@"date"] = [[NSDate alloc] init];
         
         [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             NSLog(@"PFObject successfuly saved.");

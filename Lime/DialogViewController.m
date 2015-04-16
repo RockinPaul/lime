@@ -30,8 +30,8 @@
     
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     [pubNubManager initConnection];
-    [pubNubManager send:message];
-    //[pubNubManager receive:message];
+//    [pubNubManager send:message];
+    [pubNubManager receive:message];
     
     // =================================
     
