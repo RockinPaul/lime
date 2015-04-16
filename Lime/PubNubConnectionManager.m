@@ -24,7 +24,6 @@
 }
 
 
-
 - (PNChannel *)pubNubConnect
 {
     // PubNub implementation
@@ -78,16 +77,13 @@
             [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"PFObject successfuly saved.");
             }];
-
-            //Unsubscribe once the message has been sent.
-//            [PubNub unsubscribeFromChannel:self.channel];
         }
     }];
 }
 
 
-- (void)receive:(Message *)message
-{
+- (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView
+{   // array - to append new message text. tableView - need to reaload
     // Observer looks for message received events
     
     PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
@@ -95,35 +91,20 @@
     [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *pnMessage) {
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
         
-        pfObject[@"text"] = [NSString stringWithFormat:@"%@", pnMessage.message];
-        pfObject[@"date"] = [[NSDate alloc] init];
+        NSDate *date = [[NSDate alloc] init];
+        NSString *text = [NSString stringWithFormat:@"%@", pnMessage.message];
+        
+        [messageArray addObject:text];
+        [dateArray addObject:date];
+        
+        pfObject[@"text"] = text;
+        pfObject[@"date"] = date;
         
         [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [tableView reloadData];
             NSLog(@"PFObject successfuly saved.");
         }];
     }];
-}
-
-
-- (void)addClientChannelSubscriptionStateObserver
-{
-//    [[PNObservationCenter defaultCenter] addClientChannelSubscriptionStateObserver:self withCallbackBlock:^(PNSubscriptionProcessState state, NSArray *channels, PNError *error){
-//        
-//        switch (state) {
-//            case PNSubscriptionProcessSubscribedState:
-//                NSLog(@"OBSERVER: Subscribed to Channel: %@", channels[0]);
-//                break;
-//            case PNSubscriptionProcessNotSubscribedState:
-//                NSLog(@"OBSERVER: Not subscribed to Channel: %@, Error: %@", channels[0], error);
-//                break;
-//            case PNSubscriptionProcessWillRestoreState:
-//                NSLog(@"OBSERVER: Will re-subscribe to Channel: %@", channels[0]);
-//                break;
-//            case PNSubscriptionProcessRestoredState:
-//                NSLog(@"OBSERVER: Re-subscribed to Channel: %@", channels[0]);
-//                break;
-//        }
-//    }];
 }
 
 
@@ -139,28 +120,6 @@
             NSLog(@"OBSERVER: Unsubscribed from Channel: %@, Error: %@", channel[0], error);
         }
     }];
-}
-
-
-- (void)addMessageProcessingObserver
-{
-//    // #3 Add observer to catch message send events.
-//    [[PNObservationCenter defaultCenter] addMessageProcessingObserver:self withBlock:^(PNMessageState state, id data){
-//        
-//        switch (state) {
-//            case PNMessageSent:
-//                NSLog(@"OBSERVER: Message Sent.");
-//                break;
-//            case PNMessageSending:
-//                NSLog(@"OBSERVER: Sending Message...");
-//                break;
-//            case PNMessageSendingError:
-//                NSLog(@"OBSERVER: ERROR: Failed to Send Message.");
-//                break;
-//            default:
-//                break;
-//        }
-//    }];
 }
 
 

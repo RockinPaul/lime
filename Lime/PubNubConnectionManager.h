@@ -16,7 +16,7 @@
 
 - (void)initConnection;
 - (void)send:(Message *)message;
-- (void)receive:(Message *)message; // wrapper for receiver
+- (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView; // wrapper for receiver
 
 + (PubNubConnectionManager *) sharedInstance;
 

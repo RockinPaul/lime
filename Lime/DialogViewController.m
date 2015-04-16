@@ -24,7 +24,7 @@
     
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     [pubNubManager initConnection];
-    [pubNubManager receive:nil];
+    [pubNubManager receiveTo:self.messageArray AndDateArray:self.dateArray forTable:self.tableView];
     
     // =================================
     
