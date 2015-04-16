@@ -22,6 +22,17 @@
 }
 
 
+- (PFObject *)messageToPFObject:(Message *)message {
+    PFObject *object = [PFObject objectWithClassName:@"Message"];
+    object[@"createdAt"] = message.date;
+    object[@"text"] = message.text;
+    object[@"sender"] = message.sender;
+    object[@"recipient"] = message.recipient;
+    
+    return object;
+}
+
+
 - (void)sendMessageTo:(PFUser *)recipient {
     
     PFObject *pfMessage = [PFObject objectWithClassName:@"Message"];

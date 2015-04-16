@@ -8,6 +8,7 @@
 
 #import "PNImports.h"
 #import "Message.h"
+#import <Parse/Parse.h>
 
 @interface PubNubConnectionManager : NSObject 
 
@@ -15,7 +16,7 @@
 
 - (void)initConnection;
 - (void)send:(Message *)message;
-- (Message *)receive; // wrapper for receiver
+- (void)receive:(Message *)message; // wrapper for receiver
 
 + (PubNubConnectionManager *) sharedInstance;
 

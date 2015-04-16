@@ -22,8 +22,16 @@
     
     [self getTableInfo];
     
+    Message *message = [[Message alloc] init];
+    message.text = @"TEXT TEXT TEXT TEXT TEXT";
+    message.date = [[NSDate alloc] init];
+    message.sender = [PFUser currentUser];
+    message.recipient = [PFUser currentUser];
+    
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     [pubNubManager initConnection];
+    [pubNubManager send:message];
+    [pubNubManager receive:message];
     
     // =================================
     
