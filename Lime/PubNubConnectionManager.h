@@ -15,7 +15,7 @@
 
 - (void)initConnection;
 - (void)send:(Message *)message;
-- (Message *)receive;
+- (Message *)receive; // wrapper for receiver
 
 + (PubNubConnectionManager *) sharedInstance;
 

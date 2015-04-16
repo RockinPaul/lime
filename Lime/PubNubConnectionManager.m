@@ -14,6 +14,7 @@
 // ========================================= PubNub section================================================
 
 - (void)initConnection {
+    
     self.channel = [self pubNubConnect];
     
     [self addClientConnectionStateObserver];
