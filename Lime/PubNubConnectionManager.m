@@ -90,7 +90,7 @@
 {
     // Observer looks for message received events
     
-    PFObject *pfObject = [message messageToPFObject:message];
+    PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
     
     [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *pnMessage) {
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
