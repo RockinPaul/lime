@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "UserInfo.h"
+#import "DialogViewController.h"
 
 @interface ContactsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 

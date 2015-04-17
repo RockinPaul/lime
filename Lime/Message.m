@@ -16,8 +16,7 @@
     
     Message *message = [[Message alloc] init];
     message.text = text;
-    message.sender = [PFUser currentUser];
-    
+
     return message;
 }
 

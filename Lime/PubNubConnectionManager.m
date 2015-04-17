@@ -70,15 +70,6 @@
         if (messageState == PNMessageSent) {
             NSLog(@"OBSERVER: MESSAGE SENT!");
             [tableView reloadData];
-            
-//            PFObject *pfObject = [message messageToPFObject:message];
-//            pfObject[@"text"] = [NSString stringWithFormat:@"%@", message.text];
-//            pfObject[@"date"] = [[NSDate alloc] init];
-//            
-//            [pfObject saveInBackgroundWithlock:^(BOOL succeeded, NSError *error) {
-//                NSLog(@"PFObject successfuly saved.");
-//                [tableView reloadData];
-//            }];
         }
     }];
 }
@@ -89,6 +80,7 @@
     // Observer looks for message received events
     
     PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
+    UserInfo *userInfo = [UserInfo sharedInstance];
     
     [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *pnMessage) {
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
@@ -101,13 +93,16 @@
         
         pfObject[@"text"] = text;
         pfObject[@"date"] = date;
+        pfObject[@"sender"] = userInfo.sender;
+        pfObject[@"recipient"] = [PFUser currentUser];
         
-        if ([pfObject valueForKey:@"sender"] != nil) {
-            [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [tableView reloadData];
-                NSLog(@"PFObject successfuly saved.");
-            }];
-        }
+        NSLog(@"CHECK!");
+
+        
+        [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [tableView reloadData];
+            NSLog(@"PFObject successfuly saved.");
+        }];
     }];
 }
 

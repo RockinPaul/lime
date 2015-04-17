@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "Message.h"
 #import "PubNubConnectionManager.h"
+#import "UserInfo.h"
 
 @interface DialogViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 

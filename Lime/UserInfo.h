@@ -10,7 +10,7 @@
 
 @interface UserInfo : NSObject
 
-@property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) PFUser *sender;
 @property (nonatomic, strong) PFUser *recipient;
 
 + (UserInfo *)sharedInstance;

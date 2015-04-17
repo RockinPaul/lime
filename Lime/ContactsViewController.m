@@ -118,6 +118,10 @@
         PFObject *object = [objects firstObject];
         PFUser *recipientUser = [object valueForKey:@"objectId"];
         userInfo.recipient = recipientUser;
+        userInfo.sender = [PFUser currentUser];
+        
+        DialogViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"dialog"];
+        [self presentViewController:viewController animated:YES completion:nil];
      
         NSLog(@"%@", [userInfo.recipient description]);
     }];

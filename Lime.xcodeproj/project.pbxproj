@@ -986,9 +986,9 @@
 			isa = PBXGroup;
 			children = (
 				E9F790C51AD7BA5000C962DD /* AppDelegate.h */,
+				E9F790C61AD7BA5000C962DD /* AppDelegate.m */,
 				E967636E1AE0E2F3001C351A /* UserInfo.h */,
 				E967636F1AE0E346001C351A /* UserInfo.m */,
-				E9F790C61AD7BA5000C962DD /* AppDelegate.m */,
 				E9F790CB1AD7BA5000C962DD /* ViewController.h */,
 				E9F790CC1AD7BA5000C962DD /* ViewController.m */,
 				E9F7911C1AD92C1F00C962DD /* ContactsViewController.h */,

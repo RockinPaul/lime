@@ -8,6 +8,7 @@
 
 #import "PNImports.h"
 #import "Message.h"
+#import "UserInfo.h"
 #import <Parse/Parse.h>
 
 @interface PubNubConnectionManager : NSObject 

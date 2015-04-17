@@ -45,13 +45,18 @@
 
 - (void)send:(UIButton *)sender {
     
+    UserInfo *userInfo = [UserInfo sharedInstance];
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
     
     Message *message = [[Message alloc] init];
     message.text = [self.messageTextField text];    // get text from messageTextField
     message.date = [[NSDate alloc] init];           // init date attribute by current date
-    message.sender = [PFUser currentUser];          // sender is current application user
-    message.recipient = [PFUser currentUser];       // TODO
+    message.sender = userInfo.sender;               // sender is current application user
+    message.recipient = userInfo.recipient;         // TODO
+    
+    [self.messageArray addObject:message.text];
+    [self.dateArray addObject:message.date];
+    [self.messageTextField setText:nil];
     
     [pubNubManager send:message forTable:self.tableView];
 }
@@ -59,8 +64,13 @@
 
 - (void) getTableInfo {
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
-    [query whereKey:@"recipient" equalTo: [PFUser currentUser]];
+    PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
+    [query1 whereKey:@"recipient" equalTo:[PFUser currentUser]];
+    
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
+    [query2 whereKey:@"sender" equalTo:[PFUser currentUser]];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
     
     self.messageArray = [[NSMutableArray alloc] init];
     self.dateArray = [[NSMutableArray alloc] init];
@@ -74,7 +84,6 @@
             
             date = [obj valueForKey:@"createdAt"];
             message = [obj valueForKey:@"text"];
-            
             
             [self.messageArray addObject:message];
             [self.dateArray addObject:date];
