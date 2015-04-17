@@ -64,11 +64,14 @@
 
 - (void) getTableInfo {
     
+    
+    UserInfo *userInfo = [UserInfo sharedInstance];
+  
     PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
-    [query1 whereKey:@"recipient" equalTo:[PFUser currentUser]];
+    [query1 whereKey:@"recipient" equalTo:userInfo.recipient];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    [query2 whereKey:@"sender" equalTo:[PFUser currentUser]];
+    [query2 whereKey:@"sender" equalTo:userInfo.sender];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
     
