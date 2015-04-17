@@ -116,7 +116,9 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         PFObject *object = [objects firstObject];
-        PFUser *recipientUser = [object valueForKey:@"objectId"];
+        NSLog(@"OBJECT: %@", [object description]);
+        
+        PFUser *recipientUser = (PFUser *)object;
         userInfo.recipient = recipientUser;
         userInfo.sender = [PFUser currentUser];
         

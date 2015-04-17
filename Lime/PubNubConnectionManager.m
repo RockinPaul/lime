@@ -97,7 +97,7 @@
         pfObject[@"text"] = text;
         pfObject[@"date"] = date;
         pfObject[@"sender"] = userInfo.sender;
-        pfObject[@"recipient"] = [PFUser currentUser];
+        pfObject[@"recipient"] = userInfo.recipient;
         
         NSLog(@"CHECK!");
 
