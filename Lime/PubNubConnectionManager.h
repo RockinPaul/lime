@@ -18,7 +18,7 @@
 - (void)send:(Message *)message forTable:(UITableView *)tableView;
 - (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView; // wrapper for receiver
 
-+ (PubNubConnectionManager *) sharedInstance;
++ (PubNubConnectionManager *)sharedInstance;
 
 
 @end

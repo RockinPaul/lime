@@ -69,15 +69,16 @@
     [PubNub sendMessage:[NSString stringWithFormat:@"%@", message.text] toChannel:self.channel withCompletionBlock:^(PNMessageState messageState, id data) {
         if (messageState == PNMessageSent) {
             NSLog(@"OBSERVER: MESSAGE SENT!");
+            [tableView reloadData];
             
-            PFObject *pfObject = [message messageToPFObject:message];
-            pfObject[@"text"] = [NSString stringWithFormat:@"%@", message.text];
-            pfObject[@"date"] = [[NSDate alloc] init];
-            
-            [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                NSLog(@"PFObject successfuly saved.");
-                [tableView reloadData];
-            }];
+//            PFObject *pfObject = [message messageToPFObject:message];
+//            pfObject[@"text"] = [NSString stringWithFormat:@"%@", message.text];
+//            pfObject[@"date"] = [[NSDate alloc] init];
+//            
+//            [pfObject saveInBackgroundWithlock:^(BOOL succeeded, NSError *error) {
+//                NSLog(@"PFObject successfuly saved.");
+//                [tableView reloadData];
+//            }];
         }
     }];
 }

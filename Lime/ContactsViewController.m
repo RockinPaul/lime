@@ -31,7 +31,7 @@
     }
     [self.tableView setSeparatorColor:[UIColor colorWithRed:126.0/255.0 green:211.0/255.0 blue:33.0/255.0 alpha:100.0]];
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 3.0 target: self selector: @selector(update:) userInfo: nil repeats: YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector: @selector(update:) userInfo: nil repeats: YES];
     [self update:timer];
  
 }
@@ -107,7 +107,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"%ld", (long)indexPath.row);
+    UserInfo *userInfo = [UserInfo sharedInstance];
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query whereKey:@"email" equalTo:[self.contactsArray objectAtIndex:indexPath.row]];
+    
+    NSLog(@"%@", [self.contactsArray objectAtIndex:indexPath.row]);
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        PFObject *object = [objects firstObject];
+        PFUser *recipientUser = [object valueForKey:@"objectId"];
+        userInfo.recipient = recipientUser;
+     
+        NSLog(@"%@", [userInfo.recipient description]);
+    }];
 }
 
 

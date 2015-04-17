@@ -33,23 +33,6 @@
 }
 
 
-- (void)sendMessageTo:(PFUser *)recipient {
-    
-    PFObject *pfMessage = [PFObject objectWithClassName:@"Message"];
-    pfMessage[@"text"] = self.text;
-    pfMessage[@"sender"] = self.sender;
-    pfMessage[@"recipient"] = self.recipient;
-    
-    [pfMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfuly save!");
-        } else {
-            NSLog(@"%ld", [error code]);
-        }
-    }];
-}
-
-
 - (void)describeMessage:(Message *)message {
     NSLog(@"MESSAGE: %@", message.text);
     NSLog(@"DATE: %@", message.date);

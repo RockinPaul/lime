@@ -114,6 +114,7 @@
 		E96763621ADF0BFF001C351A /* PNLoggerSymbols.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96762F51ADF0BFF001C351A /* PNLoggerSymbols.plist */; };
 		E96763631ADF0BFF001C351A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96762FA1ADF0BFF001C351A /* Info.plist */; };
 		E967636D1ADF200F001C351A /* PubNubConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E967636C1ADF200F001C351A /* PubNubConnectionManager.m */; };
+		E96763701AE0E346001C351A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E967636F1AE0E346001C351A /* UserInfo.m */; };
 		E9F790C41AD7BA5000C962DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C31AD7BA5000C962DD /* main.m */; };
 		E9F790C71AD7BA5000C962DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C61AD7BA5000C962DD /* AppDelegate.m */; };
 		E9F790CA1AD7BA5000C962DD /* Lime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9F790C81AD7BA5000C962DD /* Lime.xcdatamodeld */; };
@@ -451,6 +452,8 @@
 		E96762FA1ADF0BFF001C351A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E967636B1ADF1FB5001C351A /* PubNubConnectionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubConnectionManager.h; sourceTree = "<group>"; };
 		E967636C1ADF200F001C351A /* PubNubConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubConnectionManager.m; sourceTree = "<group>"; };
+		E967636E1AE0E2F3001C351A /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		E967636F1AE0E346001C351A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		E9F790BE1AD7BA4F00C962DD /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F790C21AD7BA5000C962DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9F790C31AD7BA5000C962DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -983,6 +986,8 @@
 			isa = PBXGroup;
 			children = (
 				E9F790C51AD7BA5000C962DD /* AppDelegate.h */,
+				E967636E1AE0E2F3001C351A /* UserInfo.h */,
+				E967636F1AE0E346001C351A /* UserInfo.m */,
 				E9F790C61AD7BA5000C962DD /* AppDelegate.m */,
 				E9F790CB1AD7BA5000C962DD /* ViewController.h */,
 				E9F790CC1AD7BA5000C962DD /* ViewController.m */,
@@ -1283,6 +1288,7 @@
 				E96763081ADF0BFF001C351A /* PNWriteBuffer.m in Sources */,
 				E96763001ADF0BFF001C351A /* PubNub+Messaging.m in Sources */,
 				E96763311ADF0BFF001C351A /* PNMessagesHistory.m in Sources */,
+				E96763701AE0E346001C351A /* UserInfo.m in Sources */,
 				E96763531ADF0BFF001C351A /* PNLeaveRequest.m in Sources */,
 				E967631D1ADF0BFF001C351A /* PNResponseDeserialize.m in Sources */,
 				E967632D1ADF0BFF001C351A /* PNError.m in Sources */,
