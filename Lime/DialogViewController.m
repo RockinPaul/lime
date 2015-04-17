@@ -54,8 +54,8 @@
     message.sender = userInfo.sender;               // sender is current application user
     message.recipient = userInfo.recipient;         // TODO
     
-    [self.messageArray addObject:message.text];
-    [self.dateArray addObject:message.date];
+//    [self.messageArray addObject:message.text];
+//    [self.dateArray addObject:message.date];
     [self.messageTextField setText:nil];
     
     [pubNubManager send:message forTable:self.tableView];

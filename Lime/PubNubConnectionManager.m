@@ -79,11 +79,14 @@
 {   // array - to append new message text. tableView - need to reaload
     // Observer looks for message received events
     
-    PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
     UserInfo *userInfo = [UserInfo sharedInstance];
     
     [[PNObservationCenter defaultCenter] addMessageReceiveObserver:self withBlock:^(PNMessage *pnMessage) {
+        
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
+
+        PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
+
         
         NSDate *date = [[NSDate alloc] init];
         NSString *text = [NSString stringWithFormat:@"%@", pnMessage.message];
