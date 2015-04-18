@@ -51,6 +51,7 @@
             // Hooray! Let them use the app now.
             NSLog(@"Authorization successful!");
             [self.newcomerLabel setText:@"Check your email to confirm registration"];
+            [self presentViewController];
         } else {
             if ([error code] == 203) { // email already exists
                 [self.errorLabel setText:@"Email already exists"];
