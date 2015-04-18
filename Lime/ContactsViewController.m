@@ -54,27 +54,31 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
+            
+            NSDate *date;
+            NSString *contact;
+            
+            for (PFObject *obj in objects) {
+                
+                if (obj != [PFUser currentUser]) {
+                    
+                    date = [obj valueForKey:@"createdAt"];
+                    contact = [obj valueForKey:@"username"];
+                
+                    [self.contactsArray addObject:contact];
+                    [self.dateArray addObject:date];
+                }
+            }
+            
+            NSLog(@"%@", [self.contactsArray description]);
+            NSLog(@"%@", [self.dateArray description]);
+            
+            [self.tableView reloadData]; // for loading new data from arrays
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        
-        NSDate *date;
-        NSString *contact;
-        
-        for (PFObject *obj in objects) {
-            
-            date = [obj valueForKey:@"createdAt"];
-            contact = [obj valueForKey:@"username"];
-            
-            
-            [self.contactsArray addObject:contact];
-            [self.dateArray addObject:date];
-        }
-        NSLog(@"%@", [self.contactsArray description]);
-        NSLog(@"%@", [self.dateArray description]);
-        
-        [self.tableView reloadData]; // for loading new data from arrays
     }];
 }
 
