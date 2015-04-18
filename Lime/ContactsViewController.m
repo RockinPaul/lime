@@ -30,6 +30,7 @@
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     [self.tableView setSeparatorColor:[UIColor colorWithRed:126.0/255.0 green:211.0/255.0 blue:33.0/255.0 alpha:100.0]];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0 green:63.0/255.0 blue:159.0/255.0 alpha:100.0]];
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector: @selector(update:) userInfo: nil repeats: YES];
     [self update:timer];
@@ -182,6 +183,8 @@
     [cell.contentView addSubview:nameLabel];
     [cell.contentView addSubview:questionLabel];
     
+    [cell setBackgroundColor:[UIColor whiteColor]]; // Setting background color
+    
     return cell;
 }
 
@@ -193,7 +196,7 @@
 
 // =============== Header and footer ====================
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0;
+    return 30.0;
 }
 
 

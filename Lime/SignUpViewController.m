@@ -21,7 +21,7 @@
 
 - (void)presentViewController {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    ContactsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"contacts"];
+    ContactsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"navigation"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
