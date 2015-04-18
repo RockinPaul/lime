@@ -69,9 +69,11 @@
   
     PFQuery *query1 = [PFQuery queryWithClassName:@"Message"];
     [query1 whereKey:@"recipient" equalTo:userInfo.recipient];
+    [query1 whereKey:@"sender" equalTo:userInfo.sender];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"Message"];
-    [query2 whereKey:@"sender" equalTo:userInfo.sender];
+    [query2 whereKey:@"recipient" equalTo:userInfo.sender];
+    [query2 whereKey:@"sender" equalTo:userInfo.recipient];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
     

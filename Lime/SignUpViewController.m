@@ -11,16 +11,18 @@
 
 @implementation SignUpViewController
 
-- (void)viewDidLoad {
-    
+
+- (void)viewDidAppear:(BOOL)animated {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        [self presentViewController];
+    }
 }
 
-
-// TODO
 - (void)presentViewController {
-    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    //    ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-    //    [self presentViewController:vc animated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ContactsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"contacts"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 
