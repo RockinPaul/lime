@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E905C88F1AE4690E00C30FE8 /* iphone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E905C88E1AE4690E00C30FE8 /* iphone5.storyboard */; };
 		E9675FFD1ADE731F001C351A /* DialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9675FFC1ADE731F001C351A /* DialogViewController.m */; };
 		E96762FB1ADF0BFF001C351A /* PNObservationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E96761DA1ADF0BFE001C351A /* PNObservationCenter.m */; };
 		E96762FC1ADF0BFF001C351A /* PubNub+APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = E96761DC1ADF0BFE001C351A /* PubNub+APNS.m */; };
@@ -173,6 +174,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E905C88E1AE4690E00C30FE8 /* iphone5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iphone5.storyboard; sourceTree = "<group>"; };
 		E9675FFB1ADE72C3001C351A /* DialogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialogViewController.h; sourceTree = "<group>"; };
 		E9675FFC1ADE731F001C351A /* DialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewController.m; sourceTree = "<group>"; };
 		E96761D81ADF0BFE001C351A /* PNObservationCenter+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PNObservationCenter+Protected.h"; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 				E9F790EB1AD7CE3300C962DD /* User.h */,
 				E9F790EE1AD7F91C00C962DD /* User.m */,
 				E9F790CE1AD7BA5000C962DD /* Main.storyboard */,
+				E905C88E1AE4690E00C30FE8 /* iphone5.storyboard */,
 				E9F790D11AD7BA5000C962DD /* Images.xcassets */,
 				E9F790D31AD7BA5000C962DD /* LaunchScreen.xib */,
 				E9F790C81AD7BA5000C962DD /* Lime.xcdatamodeld */,
@@ -1167,6 +1170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9F790D01AD7BA5000C962DD /* Main.storyboard in Resources */,
+				E905C88F1AE4690E00C30FE8 /* iphone5.storyboard in Resources */,
 				E9F790D51AD7BA5000C962DD /* LaunchScreen.xib in Resources */,
 				E96763621ADF0BFF001C351A /* PNLoggerSymbols.plist in Resources */,
 				E96763631ADF0BFF001C351A /* Info.plist in Resources */,

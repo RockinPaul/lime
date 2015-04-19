@@ -33,7 +33,8 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIStoryboard *storyboard = [self grabStoryboard];
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"sign_up"];
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"navigation"];
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"dialog"];
@@ -41,10 +42,30 @@
     [pubNubConnection initConnection];
     [pubNubConnection receive];
     
+    
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+
+- (UIStoryboard *)grabStoryboard {
+    
+    UIStoryboard *storyboard;
+    
+    // detect the height of our screen
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height <= 568) {
+        storyboard = [UIStoryboard storyboardWithName:@"iphone5" bundle:nil];
+        // NSLog(@"Device has a 3.5inch Display.");
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        // NSLog(@"Device has a 4inch Display.");
+    }
+    
+    return storyboard;
 }
 
 
