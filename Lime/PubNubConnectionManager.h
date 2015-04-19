@@ -14,15 +14,16 @@
 @interface PubNubConnectionManager : NSObject 
 
 @property (nonatomic, strong) PNChannel *channel;
+@property (nonatomic, strong) NSMutableArray *messageArray;
+@property (nonatomic, strong) NSMutableArray *dateArray;
+@property (nonatomic, strong) UITableView *tableView;
 
 - (void)initConnection;
 - (void)send:(Message *)message forTable:(UITableView *)tableView;
-- (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView; // wrapper for receiver
-
+- (void)receive;
 - (PNChannel *)pubNubConnect;
 - (void)addClientChannelUnsubscriptionObserver;
 
 + (PubNubConnectionManager *)sharedInstance;
-
 
 @end

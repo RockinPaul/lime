@@ -77,7 +77,7 @@
 }
 
 
-- (void)receiveTo:(NSMutableArray *)messageArray AndDateArray:(NSMutableArray *)dateArray forTable:(UITableView *)tableView
+- (void)receive
 {   // array - to append new message text. tableView - need to reaload
     // Observer looks for message received events
     
@@ -92,8 +92,8 @@
         NSDate *date = [[NSDate alloc] init];
         NSString *text = [NSString stringWithFormat:@"%@", pnMessage.message];
         
-        [messageArray addObject:text];
-        [dateArray addObject:date];
+        [self.messageArray addObject:text];
+        [self.dateArray addObject:date];
         
         pfObject[@"text"] = text;
         pfObject[@"date"] = date;
@@ -103,7 +103,7 @@
         NSLog(@"CHECK!");
         
         [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [tableView reloadData];
+            [self.tableView reloadData];
             NSLog(@"PFObject successfuly saved.");
         }];
     }];

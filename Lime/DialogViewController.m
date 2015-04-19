@@ -20,11 +20,14 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
+    pubNubManager.tableView = self.tableView;
+    pubNubManager.messageArray = self.messageArray;
+    pubNubManager.dateArray = self.dateArray;
+    
     [self getTableInfo];
     
-    PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
-    
-    [pubNubManager receiveTo:self.messageArray AndDateArray:self.dateArray forTable:self.tableView];
+//    [pubNubManager receiveTo:self.messageArray AndDateArray:self.dateArray forTable:self.tableView];
 }
 
 

@@ -39,6 +39,7 @@
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"dialog"];
     PubNubConnectionManager *pubNubConnection = [PubNubConnectionManager sharedInstance];
     [pubNubConnection initConnection];
+    [pubNubConnection receive];
     
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
