@@ -15,6 +15,9 @@
 @interface ContactsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIButton *logoutButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *barButtonItem;
+
 @property (nonatomic, strong) NSMutableArray *contactsArray;
 @property (nonatomic, strong) NSMutableArray *dateArray;
 

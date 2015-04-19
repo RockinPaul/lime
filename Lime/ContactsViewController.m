@@ -16,10 +16,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    
     UISearchBar *searchBar = [UISearchBar new];
     searchBar.showsCancelButton = YES;
-    searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(70.0, 6.0, 200.0, 28.0)];
+    searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(70.0, 8.0, 200.0, 28.0)];
     [searchBar setSearchBarStyle:UISearchBarStyleMinimal];
     UIView *barWrapper = [[UIView alloc]initWithFrame:CGRectMake(70.0, 0.0, 200.0, 45.0)];
     [barWrapper addSubview:searchBar];

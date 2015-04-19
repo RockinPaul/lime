@@ -13,6 +13,9 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
+    
+    [PFUser logOut]; // logout for demo
+    
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         [self presentViewController];
