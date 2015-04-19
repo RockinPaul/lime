@@ -105,11 +105,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    // It's very useful fix!
+    NSString *CellIdentifier = [NSString  stringWithFormat:@"Cell_%ld", indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
    
-    // create a background image for the cell:
     UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, 300.0, 30.0)];
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 13.0, 150.0, 80.0)];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    NSString *cellValue;
+    
+    if (cell.backgroundView == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+    // create a background image for the cell:
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundView:bgView];
@@ -117,7 +129,6 @@
     
     // Date
     // create a custom label:                                        x    y   width  height
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, 300.0, 30.0)];
     [dateLabel setTag:1];
     [dateLabel setBackgroundColor:[UIColor clearColor]]; // transparent label background
     [dateLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:1.0]];
@@ -125,27 +136,29 @@
 
     NSDate* date = [self.dateArray objectAtIndex:indexPath.row];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
     
     NSString *stringFromDate = [formatter stringFromDate:date];
     [dateLabel setText:stringFromDate];
     // =========================================
     
-    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 13.0, 150.0, 80.0)];
     [messageLabel setTag:2];
     [messageLabel setBackgroundColor:[UIColor clearColor]];
     [messageLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];
     [messageLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:100.0]];
     [messageLabel setNumberOfLines: 2];
     
-    NSString *cellValue = [self.messageArray objectAtIndex:indexPath.row];
+    cellValue = [self.messageArray objectAtIndex:indexPath.row];
     [messageLabel setText: cellValue];
     
     // Adding subviews to cell
     [cell.contentView addSubview:dateLabel];
     [cell.contentView addSubview:messageLabel];
-
+        
+        NSLog(@"REUSE CELL!");
+        
+    }
+    
     return cell;
 }
 
