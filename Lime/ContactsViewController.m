@@ -22,14 +22,17 @@
     [searchBar setSearchBarStyle:UISearchBarStyleMinimal];
     UIView *barWrapper = [[UIView alloc]initWithFrame:CGRectMake(70.0, 0.0, 200.0, 45.0)];
     [barWrapper addSubview:searchBar];
+//    [barWrapper setBackgroundColor:[UIColor colorWithRed:25.0/255.0 green:118.0/255.0 blue:210.0/255.0 alpha:1.0]];
     self.navigationItem.titleView = barWrapper;
+    
+//    [self.navigationItem.titleView setBackgroundColor:[UIColor colorWithRed:25.0/255.0 green:118.0/255.0 blue:210.0/255.0 alpha:1.0]];
     
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     [self.tableView setSeparatorColor:[UIColor colorWithRed:126.0/255.0 green:211.0/255.0 blue:33.0/255.0 alpha:100.0]];
-    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0 green:63.0/255.0 blue:159.0/255.0 alpha:100.0]];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:25.0/255.0 green:118.0/255.0 blue:210.0/255.0 alpha:1.0]];
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector: @selector(update:) userInfo: nil repeats: YES];
     [self update:timer];
@@ -194,8 +197,31 @@
 
 
 // =============== Header and footer ====================
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    if (section == 0)
+        [headerView setBackgroundColor:[UIColor colorWithRed:25.0/255.0 green:118.0/255.0 blue:210.0/255.0 alpha:1.0]];
+    else
+        [headerView setBackgroundColor:[UIColor clearColor]];
+    return headerView;
+}
+
+
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    if (section == 0)
+        [footerView setBackgroundColor:[UIColor colorWithRed:25.0/255.0 green:118.0/255.0 blue:210.0/255.0 alpha:1.0]];
+    else
+        [footerView setBackgroundColor:[UIColor clearColor]];
+    return footerView;
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30.0;
+    return 50.0;
 }
 
 
