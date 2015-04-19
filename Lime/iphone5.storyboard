@@ -27,6 +27,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="61" y="284" width="268" height="42"/>
                                         </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="Zc5-YJ-jGf" id="vQ9-jf-aTl"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="email" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktt-ck-UjF">
                                         <rect key="frame" x="26" y="152" width="268" height="32"/>
@@ -36,6 +39,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="61" y="197" width="268" height="42"/>
                                         </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="Zc5-YJ-jGf" id="dxW-3J-evY"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdK-CW-wiy">
                                         <rect key="frame" x="26" y="250" width="206" height="21"/>
@@ -65,6 +71,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="275" y="334" width="54" height="30"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="resetPassword:" destination="Zc5-YJ-jGf" eventType="touchUpInside" id="SuC-M3-buR"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgY-e5-9o0">
                                         <rect key="frame" x="35" y="62" width="250" height="50"/>
@@ -85,6 +94,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="237" y="450" width="51" height="25"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="newcomer:" destination="Zc5-YJ-jGf" eventType="touchUpInside" id="3U3-iD-6m5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frb-2T-yvf">
                                         <rect key="frame" x="52" y="300" width="217" height="40"/>
@@ -96,6 +108,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="71" y="380" width="248" height="55"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="auth:" destination="Zc5-YJ-jGf" eventType="touchUpInside" id="Ilr-gi-cfv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhi-WN-Zy4">
                                         <rect key="frame" x="78" y="400" width="164" height="30"/>
@@ -107,6 +122,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="113" y="501" width="164" height="30"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="resendConfirmation:" destination="Zc5-YJ-jGf" eventType="touchUpInside" id="gwm-d8-3pq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.098039215690000001" green="0.46274509800000002" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,14 +132,77 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Ktt-ck-UjF" id="Nwa-yA-LWr"/>
+                        <outlet property="errorLabel" destination="QdK-CW-wiy" id="Rs8-oD-rIJ"/>
+                        <outlet property="passwordTextField" destination="7DK-e6-VKU" id="3V7-ct-11t"/>
+                        <outlet property="resendConfirmationButton" destination="jhi-WN-Zy4" id="pZA-KK-Td2"/>
+                        <outlet property="signButton" destination="Frb-2T-yvf" id="tyX-sU-kQW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mW-iO-RMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="160" y="318"/>
         </scene>
+        <!--Contacts View Controller-->
+        <scene sceneID="eEz-6J-OZX">
+            <objects>
+                <tableViewController storyboardIdentifier="contacts" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tfc-Ep-ZsB" customClass="ContactsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="trz-4q-31m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Q18-8N-XmX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q18-8N-XmX" id="ZcR-dG-V2G">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tfc-Ep-ZsB" id="LxJ-eg-Kg5"/>
+                            <outlet property="delegate" destination="tfc-Ep-ZsB" id="Qf3-cr-x7Q"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MxV-bg-Ry2">
+                        <barButtonItem key="leftBarButtonItem" title="Item" width="100" style="plain" id="OeN-gl-sDw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YoB-3I-oWe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.46274509800000002" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="logout_button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s15-MG-YCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992" y="318"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hHh-qN-aTp">
+            <objects>
+                <navigationController storyboardIdentifier="navigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OxA-cw-q8A" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="moE-zQ-Hpy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.46274509800000002" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tfc-Ep-ZsB" kind="relationship" relationship="rootViewController" id="OLP-Dw-Djq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5x-cp-aRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582" y="318"/>
+        </scene>
     </scenes>
     <resources>
         <image name="button" width="227" height="47"/>
+        <image name="logout_button" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
