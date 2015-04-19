@@ -19,6 +19,8 @@
     
     [self addClientConnectionStateObserver];
     
+    NSLog(@"CHANNEL INITIALIZATION");
+    
 //    [self addClientChannelUnsubscriptionObserver];
 
 }
@@ -86,7 +88,6 @@
         NSLog(@"OBSERVER: Channel: %@, Message: %@", pnMessage.channel.name, pnMessage.message);
 
         PFObject *pfObject = [PFObject objectWithClassName:@"Message"];
-
         
         NSDate *date = [[NSDate alloc] init];
         NSString *text = [NSString stringWithFormat:@"%@", pnMessage.message];
@@ -100,7 +101,6 @@
         pfObject[@"recipient"] = userInfo.recipient;
         
         NSLog(@"CHECK!");
-
         
         [pfObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [tableView reloadData];

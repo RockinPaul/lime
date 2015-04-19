@@ -11,6 +11,8 @@
 #import "Message.h"
 #import "PubNubConnectionManager.h"
 #import "UserInfo.h"
+#import "ContactsViewController.h"
+#import "AppDelegate.h"
 
 @interface DialogViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -25,6 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *dateArray;
 
 - (IBAction)send:(UIButton *)sender;
+- (IBAction)backToContacts:(UIButton *)sender;
 
 
 

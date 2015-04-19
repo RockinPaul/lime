@@ -23,7 +23,7 @@
     [self getTableInfo];
     
     PubNubConnectionManager *pubNubManager = [PubNubConnectionManager sharedInstance];
-    [pubNubManager initConnection];
+    
     [pubNubManager receiveTo:self.messageArray AndDateArray:self.dateArray forTable:self.tableView];
 }
 
@@ -54,8 +54,8 @@
     message.sender = userInfo.sender;               // sender is current application user
     message.recipient = userInfo.recipient;         // TODO
     
-//    [self.messageArray addObject:message.text];
-//    [self.dateArray addObject:message.date];
+    [self.messageArray addObject:message.text];
+    [self.dateArray addObject:message.date];
     [self.messageTextField setText:nil];
     
     [pubNubManager send:message forTable:self.tableView];
@@ -63,7 +63,6 @@
 
 
 - (void) getTableInfo {
-    
     
     UserInfo *userInfo = [UserInfo sharedInstance];
   
@@ -188,6 +187,26 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+}
+
+- (void)backToContacts:(UIButton *)sender {
+    [self presentViewController];
+    
+    NSLog(@"%@", @"- (void)backToContacts:(UIButton *)sender");
+}
+
+- (void)presentViewController {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ContactsViewController *contactsViewController = [storyboard instantiateViewControllerWithIdentifier:@"contacts"];
+    
+    [UIView transitionFromView:self.view
+                        toView:contactsViewController.view
+                      duration:0.65f
+                       options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionTransitionCrossDissolve)
+                    completion:^(BOOL finished){
+                        [[UIApplication sharedApplication]delegate].window.rootViewController = contactsViewController;
+                    }];
 }
 
 @end

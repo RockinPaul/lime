@@ -37,6 +37,8 @@
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"sign_up"];
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"navigation"];
 //    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: @"dialog"];
+    PubNubConnectionManager *pubNubConnection = [PubNubConnectionManager sharedInstance];
+    [pubNubConnection initConnection];
     
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];

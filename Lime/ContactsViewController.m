@@ -130,7 +130,10 @@
         userInfo.sender = [PFUser currentUser];
         
         DialogViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"dialog"];
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:viewController animated:YES completion:nil];
+        
      
         NSLog(@"%@", [userInfo.recipient description]);
     }];
