@@ -141,7 +141,7 @@
 
     NSDate* date = [self.dateArray objectAtIndex:indexPath.row];
     
-    [formatter setDateFormat:@"dd.MM.yyyy"];
+    [formatter setDateFormat:@"hh:mm"];
     
     NSString *stringFromDate = [formatter stringFromDate:date];
     [dateLabel setText:stringFromDate];
