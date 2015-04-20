@@ -81,22 +81,27 @@
     
     self.messageArray = [[NSMutableArray alloc] init];
     self.dateArray = [[NSMutableArray alloc] init];
+    self.contactsArray = [[NSMutableArray alloc] init];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         NSDate *date;
         NSString *message;
+        PFUser *contact;
         
         for (PFObject *obj in objects) {
             
             date = [obj valueForKey:@"createdAt"];
             message = [obj valueForKey:@"text"];
+            contact = [obj valueForKey:@"sender"];
             
             [self.messageArray addObject:message];
             [self.dateArray addObject:date];
+            [self.contactsArray addObject:contact.username];
         }
         NSLog(@"%@", [self.messageArray description]);
         NSLog(@"%@", [self.dateArray description]);
+        NSLog(@"%@", [self.contactsArray description]);
         
         [self.tableView reloadData]; // for loading new data from arrays
     }];
@@ -108,11 +113,11 @@
     // It's very useful fix!
     NSString *CellIdentifier = [NSString  stringWithFormat:@"Cell_%ld", (long)indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
    
     UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectZero];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, 300.0, 30.0)];
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 13.0, 150.0, 80.0)];
+    UILabel *contactLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 10.0, 300.0, 30.0)];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 
     NSString *cellValue;
@@ -140,6 +145,10 @@
     
     NSString *stringFromDate = [formatter stringFromDate:date];
     [dateLabel setText:stringFromDate];
+        
+    [contactLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];
+    [contactLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:100.0]];
+    [contactLabel setText:[self.contactsArray objectAtIndex:indexPath.row]];
     // =========================================
     
     [messageLabel setTag:2];
@@ -154,6 +163,7 @@
     // Adding subviews to cell
     [cell.contentView addSubview:dateLabel];
     [cell.contentView addSubview:messageLabel];
+    [cell.contentView addSubview:contactLabel];
         
         NSLog(@"REUSE CELL!");
         

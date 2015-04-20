@@ -25,6 +25,7 @@
 @property (nonatomic, strong) PFUser *recipient;
 @property (nonatomic, strong) NSMutableArray *messageArray;
 @property (nonatomic, strong) NSMutableArray *dateArray;
+@property (nonatomic, strong) NSMutableArray *contactsArray;
 
 - (IBAction)send:(UIButton *)sender;
 - (IBAction)backToContacts:(UIButton *)sender;
