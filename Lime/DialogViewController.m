@@ -163,7 +163,7 @@
     // Adding subviews to cell
     [cell.contentView addSubview:dateLabel];
     [cell.contentView addSubview:messageLabel];
-    [cell.contentView addSubview:contactLabel];
+//    [cell.contentView addSubview:contactLabel];
         
         NSLog(@"REUSE CELL!");
         
