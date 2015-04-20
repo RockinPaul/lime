@@ -129,7 +129,8 @@
         userInfo.recipient = recipientUser;
         userInfo.sender = [PFUser currentUser];
         
-        DialogViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"dialog"];
+        UIStoryboard *storyboard = [self grabStoryboard];
+        DialogViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"dialog"];
         viewController.modalPresentationStyle = UIModalPresentationFullScreen;
         viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:viewController animated:YES completion:nil];
@@ -137,6 +138,25 @@
      
         NSLog(@"%@", [userInfo.recipient description]);
     }];
+}
+
+
+- (UIStoryboard *)grabStoryboard {
+    
+    UIStoryboard *storyboard;
+    
+    // detect the height of our screen
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height <= 568) {
+        storyboard = [UIStoryboard storyboardWithName:@"iphone5" bundle:nil];
+        // NSLog(@"Device has a 3.5inch Display.");
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        // NSLog(@"Device has a 4inch Display.");
+    }
+    
+    return storyboard;
 }
 
 
@@ -231,5 +251,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 56.0; //49.0 for iOS 8
 }
+
 
 @end

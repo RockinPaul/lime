@@ -199,6 +199,79 @@
             </objects>
             <point key="canvasLocation" x="582" y="318"/>
         </scene>
+        <!--Dialog View Controller-->
+        <scene sceneID="mzd-a8-d7Z">
+            <objects>
+                <viewController storyboardIdentifier="dialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qcy-9R-1Ho" customClass="DialogViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d3f-bH-722"/>
+                        <viewControllerLayoutGuide type="bottom" id="ANC-BA-DCz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OyK-N2-MDh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCP-kr-Wm2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fhd-wv-n9l">
+                                        <rect key="frame" x="11" y="66" width="299" height="365"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zo9-vV-M61">
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zo9-vV-M61" id="P28-36-Gbq">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="qcy-9R-1Ho" id="dMv-31-8Iq"/>
+                                            <outlet property="delegate" destination="qcy-9R-1Ho" id="znx-BP-hhg"/>
+                                        </connections>
+                                    </tableView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="18J-an-jec">
+                                        <rect key="frame" x="11" y="439" width="299" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5a-Ig-l7Q">
+                                        <rect key="frame" x="230" y="483" width="80" height="35"/>
+                                        <state key="normal" title="Send" backgroundImage="button">
+                                            <color key="titleColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="send:" destination="qcy-9R-1Ho" eventType="touchUpInside" id="eSD-xy-HvY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Px-94-H45">
+                                        <rect key="frame" x="11" y="23" width="77" height="35"/>
+                                        <state key="normal" title="Back" backgroundImage="button">
+                                            <color key="titleColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backToContacts:" destination="qcy-9R-1Ho" eventType="touchUpInside" id="GCk-Jd-cxI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.46274509800000002" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="18J-an-jec" id="Pfz-nI-4DS"/>
+                        <outlet property="sendButton" destination="E5a-Ig-l7Q" id="IGl-jz-Fwh"/>
+                        <outlet property="tableView" destination="fhd-wv-n9l" id="xRL-bu-rR0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuq-e8-o5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394" y="318"/>
+        </scene>
     </scenes>
     <resources>
         <image name="button" width="227" height="47"/>
