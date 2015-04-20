@@ -225,4 +225,51 @@
                     }];
 }
 
+// ==================================================================================================================
+// Move up the screen
+//Declare a delegate, assign your textField to the delegate and then include these methods
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    
+    [self.view endEditing:YES];
+    return YES;
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    // Assign new frame to your view
+    
+    
+    // detect the height of our screen
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height <= 568) {
+        [self.view setFrame:CGRectMake(0, -205, 400, 800)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+        // NSLog(@"Device has a 3.5inch Display.");
+    } else {
+        [self.view setFrame:CGRectMake(0, -230, 400, 800)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+    }
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    [self.view setFrame:CGRectMake(0, 0, 400, 800)];
+}
+// ==================================================================================================================
+// Dismiss on tap (have some questions)
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.messageTextField endEditing:YES];
+}
+// ==================================================================================================================
+
+
 @end
