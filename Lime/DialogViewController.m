@@ -59,6 +59,7 @@
     
     [self.messageArray addObject:message.text];
     [self.dateArray addObject:message.date];
+    [self.contactsArray addObject:userInfo.sender.username];
     [self.messageTextField setText:nil];
     
     [pubNubManager send:message forTable:self.tableView];
@@ -148,7 +149,7 @@
         
     [contactLabel setFont:[UIFont fontWithName:@"Avenir" size: 12.0]];
     [contactLabel setTextColor:[UIColor colorWithRed:(100.0/255) green:(100.0/255) blue:(100.0/255) alpha:100.0]];
-//    [contactLabel setText:[self.contactsArray objectAtIndex:indexPath.row]];
+    [contactLabel setText:[self.contactsArray objectAtIndex:indexPath.row]];
     // =========================================
     
     [messageLabel setTag:2];
@@ -163,7 +164,7 @@
     // Adding subviews to cell
     [cell.contentView addSubview:dateLabel];
     [cell.contentView addSubview:messageLabel];
-//    [cell.contentView addSubview:contactLabel];
+    [cell.contentView addSubview:contactLabel];
         
         NSLog(@"REUSE CELL!");
         
